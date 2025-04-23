@@ -1,3 +1,4 @@
+import path from 'path';
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 
@@ -9,5 +10,21 @@ export default defineConfig({
     'process.env': JSON.stringify({
       NODE_ENV: 'production',
     }),
+  },
+  build: {
+    lib: {
+      entry: path.resolve(__dirname, 'src/Image.tsx'),
+      name: 'next-image-standalone',
+      fileName: (format) => `next-image-standalone.${format}.js`,
+    },
+    rollupOptions: {
+      external: ['react', 'react-dom'],
+      output: {
+        globals: {
+          react: 'React',
+          'react-dom': 'ReactDOM',
+        },
+      },
+    },
   },
 });
