@@ -1,5 +1,6 @@
 'use client';
 
+import { useMemo } from 'react';
 import { imageConfigDefault as nextImageConfigDefault } from 'next/dist/shared/lib/image-config';
 import { ImageConfigContext as NextImageConfigContext } from 'next/dist/shared/lib/image-config-context.shared-runtime';
 import NextImage from 'next/image';
@@ -33,6 +34,9 @@ export type ImageLoader = (params: ImageLoaderParams) => string;
 export default function Image(props: ImageProps) {
   const { config, loader, ...imageProps } = props;
 
+  // Disable the following rule, because even though TypeScript knows that
+  // `loader` is required, it cannot prove that it is not `undefined` at runtime.
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (!loader) {
     // next/image generates Next.js-specific URLs for statically imported and
     // local images. By requiring a loader, we ensure that there is a way to
@@ -53,21 +57,24 @@ export default function Image(props: ImageProps) {
     return loader({ src, width, quality, imageProps } as ImageLoaderParams);
   };
 
-  const imageConfig = {
-    ...nextImageConfigDefault,
-    ...config,
-    // Ensure the following config options are not set — they are specific to
-    // the server-side logic in next/image.
-    // @see https://nextjs.org/docs/app/api-reference/components/image#configuration-options
-    localPatterns: [],
-    remotePatterns: [],
-    domains: [],
-    loaderFile: '',
-  };
+  const imageConfig = useMemo(
+    () => ({
+      ...nextImageConfigDefault,
+      ...config,
+      // Ensure the following config options are not set — they are specific to
+      // the server-side logic in next/image.
+      // @see https://nextjs.org/docs/app/api-reference/components/image#configuration-options
+      localPatterns: [],
+      remotePatterns: [],
+      domains: [],
+      loaderFile: '',
+    }),
+    [config],
+  );
 
   return (
-    <NextImageConfigContext.Provider value={imageConfig}>
+    <NextImageConfigContext value={imageConfig}>
       <NextImage {...imageProps} loader={wrappedLoader} />
-    </NextImageConfigContext.Provider>
+    </NextImageConfigContext>
   );
 }

@@ -5,7 +5,9 @@ import './index.css';
 
 import DemoApp from './DemoApp.tsx';
 
-createRoot(document.getElementById('root')!).render(
+const rootElement = document.getElementById('root');
+if (!rootElement) throw new Error('Failed to find root element');
+createRoot(rootElement).render(
   <StrictMode>
     <DemoApp />
   </StrictMode>,

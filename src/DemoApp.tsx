@@ -8,8 +8,8 @@ function App() {
       </h1>
       <h2>Remote image</h2>
       <Image
-        src="src-not-used-here--look-at-loader-in-next-line"
-        loader={({ width }) => `https://placehold.co/${width}`}
+        src="src-not-used-here--see-loader-in-next-line"
+        loader={({ width }) => `https://placehold.co/${width.toString()}`}
         alt="Test"
         width={1920}
         height={1920}
