@@ -1,7 +1,22 @@
 {
   "name": "next-image-standalone",
-  "private": true,
   "version": "0.1.0",
+  "description": "A standalone version of the Next.js Image component for use in non-Next.js projects.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/balintbrews/next-image-standalone.git"
+  },
+  "author": "Bálint Kléri (https://balintbrews.com)",
+  "bugs": "https://github.com/balintbrews/next-image-standalone/issues",
+  "homepage": "https://github.com/balintbrews/next-image-standalone#readme",
+  "keywords": [
+    "next",
+    "nextjs",
+    "next-image",
+    "image",
+    "react"
+  ],
   "type": "module",
   "files": [
     "dist"
