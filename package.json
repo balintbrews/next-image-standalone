@@ -23,8 +23,10 @@
   ],
   "main": "./dist/next-image-standalone.umd.js",
   "module": "./dist/next-image-standalone.es.js",
+  "types": "./dist/next-image-standalone.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/next-image-standalone.d.ts",
       "import": "./dist/next-image-standalone.es.js",
       "require": "./dist/next-image-standalone.umd.js"
     }
@@ -53,7 +55,8 @@
     "react-dom": "^19.0.0",
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.26.1",
-    "vite": "^6.3.1"
+    "vite": "^6.3.1",
+    "vite-plugin-dts": "^4.5.4"
   },
   "scripts": {
     "dev": "vite",

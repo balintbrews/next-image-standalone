@@ -1,9 +1,16 @@
 import path from 'path';
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
+import dts from 'vite-plugin-dts';
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    dts({
+      include: ['src/Image.tsx', 'src/types.ts'],
+      rollupTypes: true,
+    }),
+  ],
   define: {
     // Avoid running into errors due to next/image expecting to run server-side
     // code.
