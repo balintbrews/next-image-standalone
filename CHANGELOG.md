@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.3](https://github.com/balintbrews/next-image-standalone/compare/next-image-standalone-v0.1.2...next-image-standalone-v0.1.3) (2025-06-24)
+
+
+### Bug Fixes
+
+* **dependencies:** regenerate lock file ([f0bf5d9](https://github.com/balintbrews/next-image-standalone/commit/f0bf5d9e08d9d0787dbf297fec0d8f0e3b7f948c))
+
 ## [0.1.2](https://github.com/balintbrews/next-image-standalone/compare/next-image-standalone-v0.1.1...next-image-standalone-v0.1.2) (2025-06-24)
 
 
